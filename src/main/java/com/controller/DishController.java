@@ -17,6 +17,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
@@ -140,6 +141,10 @@ public class DishController {
                 dishService.updateById(dish);
             }
         }
+        //清理所有菜品的缓存数据
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
+
         return R.success("售卖状态修改成功");
     }
 
@@ -155,6 +160,10 @@ public class DishController {
         LambdaQueryWrapper<DishFlavor> queryWrapper = new LambdaQueryWrapper<>();
         queryWrapper.in(DishFlavor::getDishId,ids);
         dishFlavorService.remove(queryWrapper);
+
+        //清理所有菜品的缓存数据
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
         return R.success("菜品删除成功");
     }
 
