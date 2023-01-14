@@ -9,6 +9,10 @@ import com.entity.Setmeal;
 import com.service.CategoryService;
 import com.service.SetmealDishService;
 import com.service.SetmealService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +26,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/setmeal")
 @Slf4j
+@Api(tags = "套餐相关接口")
 public class SetmealController {
     @Autowired
     private SetmealDishService setmealDishService;
@@ -44,6 +49,12 @@ public class SetmealController {
      * 套餐分页查询
      */
     @GetMapping("/page")
+    @ApiOperation(value = "套餐分页查询接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "page",value = "页码", required = true),
+            @ApiImplicitParam(name = "pageSize",value = "每页记录数", required = true),
+            @ApiImplicitParam(name = "name",value = "套餐名称", required = false),
+    })
     public R<Page> page(int page,int pageSize,String name){
         //分页构造器对象
         Page<Setmeal> pageInfo = new Page<>(page, pageSize);
