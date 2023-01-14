@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.common.R;
 import com.entity.User;
 import com.service.UserService;
+import com.utils.SMSUtils;
 import com.utils.ValidateCodeUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class UserController {
             String code = ValidateCodeUtils.generateValidateCode(4).toString();
             log.info("code={}",code);
             //调用阿里云提供的短信服务API完成发送短信
-            //SMSUtils.sendMessage("胡苇康个人网站","SMS_268290093",phone,code);
+            SMSUtils.sendMessage("胡苇康个人网站","SMS_268290093",phone,code);
 
             //需要将生成的验证码保存到Session
             //session.setAttribute(phone,code);
