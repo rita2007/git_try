@@ -90,4 +90,15 @@ public class OrdersServiceImpl extends ServiceImpl<OrdersMapper, Orders> impleme
         //清空购物车数据
         shoppingCartService.remove(wrapper);
     }
+
+
+    public List<OrderDetail> getOrderDetailListByOrderId(Long orderId){
+        LambdaQueryWrapper<OrderDetail> queryWrapper = new LambdaQueryWrapper<>();
+        queryWrapper.eq(OrderDetail::getOrderId, orderId);
+        List<OrderDetail> orderDetailList = orderDetailService.list(queryWrapper);
+        return orderDetailList;
+    }
+
+
+
 }

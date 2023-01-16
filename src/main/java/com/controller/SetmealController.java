@@ -179,6 +179,7 @@ public class SetmealController {
             BeanUtils.copyProperties(setmealDish, dishDto);
             //这里是为了把套餐中的菜品的基本信息填充到dto中，比如菜品描述，菜品图片等菜品的基本信息
             Long dishId = setmealDish.getDishId();
+            //根据菜品id获取菜品基本信息
             Dish dish = dishService.getById(dishId);
             //将菜品信息拷贝到dishDto中
             BeanUtils.copyProperties(dish, dishDto);

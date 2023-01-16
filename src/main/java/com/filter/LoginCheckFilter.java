@@ -75,9 +75,11 @@ public class LoginCheckFilter implements Filter {
      * 路径匹配，检查本次请求是否需要放行
      */
     public boolean check(String[] urls,String requestURI){
+        //遍历的同时调用PATH_MATCHER来对路径进行匹配
         for (String url : urls){
             boolean match = PATH_MATCHER.match(url,requestURI);
             if (match){
+                //匹配到了可以放行的路径，直接放行
                 return true;
             }
         }

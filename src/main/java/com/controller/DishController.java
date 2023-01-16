@@ -132,7 +132,7 @@ public class DishController {
         //log.info("ids:{}",ids);
         LambdaQueryWrapper<Dish> queryWrapper = new LambdaQueryWrapper();
         queryWrapper.in(ids !=null,Dish::getId,ids);
-        //根据数据进行批量查询
+        //根据传入的id集合进行批量查询
         List<Dish> list = dishService.list(queryWrapper);
 
         for (Dish dish : list) {

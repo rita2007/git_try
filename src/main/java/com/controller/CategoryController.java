@@ -73,7 +73,7 @@ public class CategoryController {
     public R<List<Category>> list(Category category){
         //条件构造器
         LambdaQueryWrapper<Category> queryWrapper = new LambdaQueryWrapper<>();
-        //添加条件
+        //添加条件 type为1是菜品，为2是套餐
         queryWrapper.eq(category.getType()!= null,Category::getType,category.getType());
         //添加排序条件
         queryWrapper.orderByAsc(Category::getSort).orderByDesc(Category::getUpdateTime);
