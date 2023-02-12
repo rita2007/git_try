@@ -19,6 +19,8 @@ spring:
 
 mybatis-plus:
   configuration:
+    #zai ying she wenjian huozhe shi shuxing shi, jiang shujuku zhong biaoming he ziduanming zhong de xiahuaxian qu diao
+    #an tuo feng min ming fa ying she
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:

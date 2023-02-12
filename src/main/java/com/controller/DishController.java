@@ -63,7 +63,7 @@ public class DishController {
      * 菜品管理的分页查询
      */
     @GetMapping("/page")
-    public R<Page> page(int page, int pageSize, String name){
+    public R<Page> page(int page, int pageSize, String name){//page 页码  pageSize 每页几条
         //构造分页构造器对象
         Page<Dish> pageInfo = new Page<>(page,pageSize);
         Page<DishDto> dishDtoPage = new Page<>();

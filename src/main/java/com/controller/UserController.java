@@ -46,7 +46,7 @@ public class UserController {
             SMSUtils.sendMessage("胡苇康个人网站","SMS_268290093",phone,code);
 
             //需要将生成的验证码保存到Session
-            //session.setAttribute(phone,code);
+            session.setAttribute(phone,code);
 
             //将将生成的验证码保存到Redis中，并且设置有效期为5分钟   phone是key，code是value
             redisTemplate.opsForValue().set(phone,code,5, TimeUnit.MINUTES);
