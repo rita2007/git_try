@@ -1,8 +1,6 @@
 package com.filter;
 
-import com.alibaba.fastjson.JSON;
 import com.common.BaseContext;
-import com.common.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.AntPathMatcher;
 
@@ -66,7 +64,8 @@ public class LoginCheckFilter implements Filter {
             return;
         }
         //5如果未登录则，通过输出流方式向客户端页面响应数据
-        response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
+//        response.getWriter().write(JSON.toJSONString(R.error("NOTLOGIN")));
+        response.sendRedirect("/front/page/login.html");
         return;
 
     }
